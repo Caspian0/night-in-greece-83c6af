@@ -224,7 +224,7 @@
 
   // ---------- SECURITY-CHECK QUIZ ----------
   const Q=document.getElementById('quiz'), C=document.getElementById('qcard');
-  const TOTAL=6; let step=0;
+  const TOTAL=7; let step=0;
   function head(n,label){ let d=''; for(let i=0;i<TOTAL;i++) d+=`<i class="${i<n?'done':''}"></i>`;
     return `<div class="qtop"><span>${label||'SECURITY CHECK'}</span><span class="dots">${d}</span></div>`; }
   function bad(t){ const m=C.querySelector('.msg'); m.className='msg bad'; m.textContent=t; C.classList.remove('shake'); void C.offsetWidth; C.classList.add('shake'); }
@@ -261,25 +261,31 @@
     document.getElementById('b').onclick=()=>{ const sel=[...C.querySelectorAll('.opt')];
       if(sel.some(b=>b.classList.contains('sel')&&b.dataset.a=='0')) return bad("A?! Throw things away?? Imposter detected. 🚨");
       if(!sel.every(b=>b.classList.contains('sel')==(b.dataset.a=='1'))) return bad('Not quite. Think bigger. MORE STUFF.');
-      good('✓ Correct. Classic Mom.',s4); }; }
+      good('✓ Correct. Classic Mom.',s3b); }; }
+
+
+  // 3b. least likely to find
+  function s3b(){ const o=[['A','An ultra specific, obscure item you have never thought about, but happens to be needed 5 years later',0],['B','An assortment of sauces and dressings from the Roman Era',0],['C','Enough bottles of water to drown a whale',0],['D','Multipacks of anything and everything on offer (rude not to, really)',0],['E','Your keys',1]];
+    C.innerHTML=head(4)+`<div class="qh">What are you LEAST likely to find in your house?</div><div class="qs">Be honest.</div><div class="opts">${o.map(x=>`<button class="opt" data-a="${x[2]}"><span class="l">${x[0]}</span>${x[1]}</button>`).join('')}</div><div class="msg"></div>`;
+    C.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ b.dataset.a=='1'?good('✓ Correct. They are never where you left them. 🔑',s4):bad("Wrong. You definitely have that. Somewhere."); }); }
 
   // 4. slider — can only go Mom's way
-  function s4(){ C.innerHTML=head(4)+`<div class="qh">Who is right, and how often?</div><div class="qs">Slide to answer.</div><div class="sl"><div class="ends"><span>Oli</span><span>Mom</span></div><input type="range" min="0" max="100" value="50" id="r"><div class="pct" id="p">50% Mom</div></div><button class="go" id="b">Submit</button><div class="msg"></div>`;
+  function s4(){ C.innerHTML=head(5)+`<div class="qh">Who is right, and how often?</div><div class="qs">Slide to answer.</div><div class="sl"><div class="ends"><span>Oli</span><span>Mom</span></div><input type="range" min="0" max="100" value="50" id="r"><div class="pct" id="p">50% Mom</div></div><button class="go" id="b">Submit</button><div class="msg"></div>`;
     const r=document.getElementById('r'),p=document.getElementById('p');
     r.oninput=()=>{ if(+r.value<50){ r.value=50; const m=C.querySelector('.msg'); m.className='msg bad'; m.textContent='Nice try. 🙂'; } p.textContent=r.value+'% Mom'; };
     r.onchange=r.oninput;
     document.getElementById('b').onclick=()=>{ +r.value<100?bad(`Only ${r.value}%? Try again.`):good('✓ Correct. Mom is always right. 100% of the time.',s5); }; }
 
   // 5. age — the wrong button runs away
-  function s5(){ C.innerHTML=head(5)+`<div class="qh">How old are you turning?</div><div class="qs">This is a legally binding question.</div><div class="opts" id="os" style="min-height:150px"><button class="opt" id="y"><span class="l">A</span>27</button><button class="opt run" id="n"><span class="l">B</span>Something else</button></div><div class="msg"></div>`;
+  function s5(){ C.innerHTML=head(6)+`<div class="qh">How old are you turning?</div><div class="qs">This is a legally binding question.</div><div class="opts" id="os" style="min-height:150px"><button class="opt" id="y"><span class="l">A</span>27</button><button class="opt run" id="n"><span class="l">B</span>Something else</button></div><div class="msg"></div>`;
     const n=document.getElementById('n'),os=document.getElementById('os');
     const flee=e=>{ e&&e.preventDefault(); const w=os.clientWidth-n.offsetWidth, h=60; n.style.position='absolute'; n.style.left=Math.random()*w+'px'; n.style.top=(60+Math.random()*h)+'px'; n.style.width='auto'; };
     ['mouseenter','touchstart','click','focus'].forEach(ev=>n.addEventListener(ev,flee,{passive:false}));
     document.getElementById('y').onclick=()=>{ mini(); good('✓ 27. As if there was any doubt.',s6); }; }
 
   // 6. ABBA finale
-  function s6(){ const o=[['A','How can I resist you?',1],['B',"Where've I put my keys?",0],['C','Is that another Amazon parcel?',0]];
-    C.innerHTML=head(6,'FINAL QUESTION')+`<div class="qh">Finish the lyric:</div><div class="qs" style="font-size:17px;font-style:italic;color:#fff">“Here I go again, my my…”</div><div class="opts">${o.map(x=>`<button class="opt" data-a="${x[2]}"><span class="l">${x[0]}</span>${x[1]}</button>`).join('')}</div><div class="msg"></div>`;
+  function s6(){ const o=[['A','Gimme gimme gimme a man after midnight',0],['B','Take a chance on me',0],['C','How can I resist you?',1],['D','Thank you for the music',0]];
+    C.innerHTML=head(7,'FINAL QUESTION')+`<div class="qh">Finish the lyric:</div><div class="qs" style="font-size:17px;font-style:italic;color:#fff">“Here I go again, my my…”</div><div class="opts">${o.map(x=>`<button class="opt" data-a="${x[2]}"><span class="l">${x[0]}</span>${x[1]}</button>`).join('')}</div><div class="msg"></div>`;
     C.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ b.dataset.a=='1'?good('✓ Identity confirmed. Unlocking your gift…',finish):bad('So close. Try again 🎶'); }); }
 
   function finish(){ Q.classList.remove('on'); const show=document.getElementById('show'); show.classList.add('play');
