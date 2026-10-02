@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>A Gift for Mum ✦</title>
+<title>A Gift for Mom ✦</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Permanent+Marker&family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
@@ -266,6 +266,49 @@
     box-shadow:0 14px 40px rgba(255,111,163,.4); animation:qin .7s 2.3s both, breathe 2.2s 3s ease-in-out infinite; cursor:pointer; }
   @keyframes breathe{ 0%,100%{ transform:scale(1); box-shadow:0 14px 40px rgba(255,111,163,.4) } 50%{ transform:scale(1.05); box-shadow:0 18px 50px rgba(255,111,163,.6) } }
   .hbs{ margin-top:14px; font-size:12px; color:#8a8a93; animation:qin .7s 2.6s both; }
+  /* ---------- REVEAL PAGE RESTYLE (black + coral) ---------- */
+  body{ background:#070707; font-family:'Inter','Poppins',sans-serif; }
+  .bg{ background:linear-gradient(180deg, rgba(7,7,7,.86), rgba(7,7,7,.97)), url('party1.jpg') center/cover no-repeat; filter:saturate(.8); }
+  .bg::before,.bg::after{ content:''; position:absolute; width:110vmax; height:110vmax; border-radius:50%; filter:blur(90px); opacity:.5; }
+  .bg::before{ background:radial-gradient(circle, rgba(255,120,110,.55), transparent 60%); top:-65vmax; left:-50vmax; animation:drift 14s ease-in-out infinite alternate; }
+  .bg::after{ background:radial-gradient(circle, rgba(150,80,255,.45), transparent 60%); bottom:-70vmax; right:-55vmax; animation:drift 17s ease-in-out infinite alternate-reverse; }
+  .star{ color:#ffb3a7; }
+  .show{ padding-top:clamp(40px,11vw,70px); }
+  .inv{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:3px; font-size:12px; color:#ffb3a7;
+    display:inline-block; background:rgba(255,128,128,.12); border:1px solid rgba(255,128,128,.3); padding:7px 14px; border-radius:99px; }
+  .logo{ width:min(80%,360px); margin:22px auto 6px; }
+  @keyframes glow{ 0%,100%{ filter:drop-shadow(0 6px 22px rgba(0,0,0,.55)); } 50%{ filter:drop-shadow(0 6px 34px rgba(255,111,163,.55)); } }
+  .loc{ font-family:'Inter',sans-serif; font-weight:700; letter-spacing:4px; font-size:12px; color:#a9a9b2; }
+  .loc b{ color:#ff8a80; }
+  .sun{ width:46px; height:46px; margin:22px auto 14px; }
+  .sun g{ fill:url(#sg); }
+  .big{ font-weight:800; font-size:clamp(24px,6.8vw,32px); line-height:1.18; letter-spacing:-.5px; }
+  .big em{ font-family:'Inter',sans-serif; font-weight:900; font-style:normal; font-size:clamp(46px,14vw,70px); letter-spacing:-2px; display:inline-block; margin-top:4px;
+    background:linear-gradient(135deg,#ffc3a0,#ff8a80 45%,#ff6fa3 70%,#b583ff); background-size:300% 300%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shim 4s ease-in-out infinite alternate; }
+  @keyframes shim{ from{ background-position:0% 50% } to{ background-position:100% 50% } }
+  .big .lon{ color:#a9a9b2; font-weight:600; }
+  .desc{ color:#c9c9d1; line-height:1.65; }
+  .desc b{ color:#fff; }
+  .tix{ gap:14px; margin-top:30px; }
+  .tk{ background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.12);
+    border-radius:22px; padding:20px 20px 16px; box-shadow:0 24px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.1);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); overflow:hidden; }
+  .tk::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg,#ffc3a0,#ff6fa3); }
+  .tk .rib{ background:linear-gradient(135deg,#ffc3a0,#ff8a80 55%,#ff6fa3); color:#1b0d10; border-radius:0 22px 0 14px; letter-spacing:1.5px; }
+  .tk .tag{ font-family:'Inter',sans-serif; font-weight:700; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#ff8a80; }
+  .tk h3{ font-size:22px; letter-spacing:-.4px; }
+  .tk p{ color:#c9c9d1; }
+  .tk .admit{ color:#ffb3a7; border-top:1.5px dashed rgba(255,255,255,.18); letter-spacing:4px; }
+  .hbd{ font-family:'Inter',sans-serif; font-weight:900; font-size:clamp(34px,10vw,52px); letter-spacing:-1.5px; line-height:1.02; margin-top:40px;
+    background:linear-gradient(135deg,#ffc3a0,#ff8a80 45%,#ff6fa3 70%,#b583ff); background-size:300% 300%; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shim 4s ease-in-out infinite alternate; }
+  .show.play .hbd{ animation:up .9s cubic-bezier(.2,.7,.2,1) forwards, shim 4s ease-in-out infinite alternate; }
+  .closing{ color:#a9a9b2; }
+  .sign .ml{ color:#a9a9b2; }
+  .sign .name{ font-family:'Inter',sans-serif; font-weight:900; letter-spacing:-1px; font-size:clamp(34px,10vw,44px); }
+  .note{ color:#ffb3a7; background:rgba(255,128,128,.1); border:1px solid rgba(255,128,128,.25); border-radius:14px; padding:12px 14px; font-weight:600; }
+  .foot{ color:#6e6e78; }
 </style>
 </head>
 <body>
@@ -292,7 +335,7 @@
     <img class="reveal logo" src="logo_white.png" alt="Mamma Mia! The Party">
     <div class="reveal loc">THE O2 <b>•</b> LONDON</div>
     <div class="reveal">
-      <svg class="sun" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="#e7bf5e">
+      <svg class="sun" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc3a0"/><stop offset=".5" stop-color="#ff8a80"/><stop offset="1" stop-color="#ff6fa3"/></linearGradient></defs><g fill="url(#sg)">
         <circle cx="50" cy="50" r="17"/>
         <rect x="47" y="4" width="6" height="16" rx="3"/><rect x="47" y="80" width="6" height="16" rx="3"/>
         <rect x="4" y="47" width="16" height="6" rx="3"/><rect x="80" y="47" width="16" height="6" rx="3"/>
@@ -301,13 +344,13 @@
         <rect x="16" y="69" width="6" height="15" rx="3" transform="rotate(45 19 77)"/>
         <rect x="78" y="69" width="6" height="15" rx="3" transform="rotate(-45 81 77)"/>
       </g></svg>
-      <div class="big">Pack your dancing shoes, Mum —<br>you &amp; Anders are going to <em>Greece!</em> <span class="lon">(London)</span></div>
+      <div class="big">Pack your dancing shoes, Mom —<br>you &amp; Anders are going to <em>Greece!</em> <span class="lon">(London)</span></div>
     </div>
     <div class="reveal desc">An evening inside a Greek-island taverna — a glass of fizz on arrival, a <b>four-course Greek feast</b>, the live <b>Mamma Mia!</b> show playing out all around your table, and an <b>ABBA disco</b> to dance the night away.</div>
 
     <div class="reveal tix">
       <div class="tk"><span class="rib">BIRTHDAY</span>
-        <div class="tag">✦ For You, Mum</div><h3>Your Birthday Treat</h3>
+        <div class="tag">✦ For You, Mom</div><h3>Your Birthday Treat</h3>
         <p>Upgraded to <b style="color:#fff">VIP</b> — champagne on arrival, wine with dinner, and the full star treatment. Because it's <i>your</i> night.</p>
         <span class="admit">ADMIT ONE · VIP</span>
       </div>
@@ -318,7 +361,7 @@
       </div>
     </div>
 
-    <div class="reveal hbd">Happy Birthday, Mum</div>
+    <div class="reveal hbd">Happy Birthday, Mom</div>
     <div class="reveal closing">Here's to ABBA, dancing, and absolutely no washing up.</div>
     <div class="reveal sign"><div class="ml">All my love,</div><div class="name">Oli</div>
       <div class="note">✦ The date is ours to choose together — whenever suits you both ✦</div>
@@ -336,9 +379,9 @@
 
   // confetti burst
   function confetti(){ const c=document.getElementById('cf'), x=c.getContext('2d');
-    c.width=innerWidth; c.height=innerHeight; const cols=['#e7bf5e','#12579d','#ffffff','#c8992f'];
+    c.width=innerWidth; c.height=innerHeight; const cols=['#ff8a80','#ff6fa3','#ffffff','#b583ff','#ffc3a0'];
     let P=[]; for(let i=0;i<160;i++){ P.push({x:Math.random()*c.width, y:-20-Math.random()*c.height,
-      w:6+Math.random()*7, h:9+Math.random()*9, c:cols[i%4], vy:2+Math.random()*3.5,
+      w:6+Math.random()*7, h:9+Math.random()*9, c:cols[i%5], vy:2+Math.random()*3.5,
       vx:-1.5+Math.random()*3, a:Math.random()*6, va:-.2+Math.random()*.4}); }
     let t=0; (function run(){ t++; x.clearRect(0,0,c.width,c.height);
       P.forEach(p=>{ p.y+=p.vy; p.x+=p.vx; p.a+=p.va; x.save(); x.translate(p.x,p.y); x.rotate(p.a);
