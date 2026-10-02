@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Gift for Mum ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Permanent+Marker&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --blue:#12579d; --blued:#0a3564; --gold:#e7bf5e; --gold2:#c8992f; --night:#07203a; }
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html,body{ height:100%; }
+  body{ font-family:'Poppins',sans-serif; color:#fff; overflow-x:hidden; background:var(--night);
+    min-height:100svh; }
+
+  /* dimmed photo + night gradient background */
+  .bg{ position:fixed; inset:0; z-index:0;
+    background:
+      linear-gradient(180deg, rgba(7,32,58,.82), rgba(7,32,58,.92)),
+      url('party1.jpg') center/cover no-repeat;
+    filter:saturate(1.1); }
+  .stars{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+  .star{ position:absolute; color:var(--gold); opacity:0; animation:tw 3.5s ease-in-out infinite; }
+  @keyframes tw{ 0%,100%{ opacity:0; transform:scale(.6);} 50%{ opacity:.9; transform:scale(1);} }
+
+  /* ---------- GATE ---------- */
+  .gate{ position:fixed; inset:0; z-index:30; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; padding:8vw;
+    background:radial-gradient(80% 60% at 50% 45%, rgba(18,87,157,.35), rgba(7,32,58,.96));
+    transition:opacity .7s ease, visibility .7s; }
+  .gate.hide{ opacity:0; visibility:hidden; }
+  .gate .pre{ font-family:'Permanent Marker'; color:var(--gold); letter-spacing:3px;
+    font-size:clamp(15px,4.5vw,22px); margin-bottom:14px; }
+  .gate .box{ font-size:clamp(64px,22vw,120px); line-height:1; margin:6px 0 22px;
+    animation:bob 2.4s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-3deg);} 50%{ transform:translateY(-12px) rotate(3deg);} }
+  .gate .open{ font-family:'Poppins'; font-weight:800; font-size:clamp(15px,4.5vw,20px);
+    color:var(--blued); background:linear-gradient(180deg,#ffe9a8,var(--gold));
+    border:none; border-radius:999px; padding:14px 30px; letter-spacing:.5px;
+    box-shadow:0 8px 26px rgba(231,191,94,.5); animation:pulse 1.8s ease-in-out infinite; cursor:pointer; }
+  @keyframes pulse{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.06);} }
+
+  /* ---------- SHOW ---------- */
+  .show{ position:relative; z-index:10; max-width:560px; margin:0 auto;
+    padding:clamp(28px,9vw,60px) 24px 60px; text-align:center; }
+  .reveal{ opacity:0; transform:translateY(26px); }
+  .show.play .reveal{ animation:up .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .show.play .reveal:nth-child(1){ animation-delay:.15s; }
+  .show.play .reveal:nth-child(2){ animation-delay:.5s; }
+  .show.play .reveal:nth-child(3){ animation-delay:.9s; }
+  .show.play .reveal:nth-child(4){ animation-delay:1.25s; }
+  .show.play .reveal:nth-child(5){ animation-delay:1.7s; }
+  .show.play .reveal:nth-child(6){ animation-delay:2.5s; }
+  .show.play .reveal:nth-child(7){ animation-delay:2.9s; }
+  .show.play .reveal:nth-child(8){ animation-delay:3.2s; }
+  @keyframes up{ to{ opacity:1; transform:none; } }
+
+  .inv{ font-family:'Permanent Marker'; color:var(--gold); letter-spacing:5px;
+    font-size:clamp(12px,3.4vw,15px); }
+  .logo{ width:min(78%,360px); margin:14px auto 4px; display:block;
+    filter:drop-shadow(0 6px 22px rgba(0,0,0,.55)); }
+  .show.play .logo{ animation:up .9s cubic-bezier(.2,.7,.2,1) forwards, glow 3.2s ease-in-out 1s infinite; }
+  @keyframes glow{ 0%,100%{ filter:drop-shadow(0 6px 22px rgba(0,0,0,.55)); }
+    50%{ filter:drop-shadow(0 6px 30px rgba(231,191,94,.55)); } }
+  .loc{ font-family:'Permanent Marker'; color:#fff; letter-spacing:3px;
+    font-size:clamp(11px,3vw,14px); margin-bottom:6px; }
+  .loc b{ color:var(--gold); }
+
+  .sun{ width:54px; height:54px; margin:18px auto 10px; display:block; animation:spin 22s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .big{ font-weight:800; font-size:clamp(22px,6.4vw,30px); line-height:1.18; color:#fff; }
+  .big em{ font-family:'Caveat Brush'; font-style:normal; color:var(--gold);
+    font-size:clamp(34px,10vw,52px); }
+  .big .lon{ font-weight:700; font-size:clamp(13px,3.6vw,16px); color:#cfe0f2; }
+  .desc{ font-size:clamp(13px,3.7vw,16px); line-height:1.6; color:#dce8f5; margin:16px 4px 0; }
+  .desc b{ color:var(--gold); }
+
+  .tix{ margin:26px 0 6px; display:flex; flex-direction:column; gap:16px; }
+  .tk{ position:relative; background:linear-gradient(160deg,var(--blue),var(--blued));
+    border:1px solid rgba(231,191,94,.5); border-radius:16px; padding:18px 18px 16px; text-align:left;
+    box-shadow:0 12px 30px rgba(0,0,0,.4); }
+  .tk .rib{ position:absolute; top:0; right:0; background:var(--gold); color:var(--blued);
+    font-weight:800; font-size:11px; letter-spacing:1px; padding:5px 12px; border-radius:0 16px 0 14px; }
+  .tk .tag{ font-family:'Permanent Marker'; color:var(--gold); letter-spacing:.5px; font-size:15px; }
+  .tk h3{ font-weight:800; font-size:20px; margin:3px 0 6px; }
+  .tk p{ font-size:13.5px; line-height:1.5; color:#e7f1fb; }
+  .tk .admit{ display:inline-block; margin-top:12px; padding-top:10px; font-size:11px; letter-spacing:3px;
+    color:var(--gold); font-weight:700; border-top:1.5px dashed rgba(255,255,255,.35); width:100%; }
+
+  .hbd{ font-family:'Caveat Brush'; color:var(--gold); font-size:clamp(38px,12vw,60px);
+    line-height:1; margin:30px 0 6px; }
+  .closing{ font-style:italic; color:#dce8f5; font-size:clamp(13px,3.7vw,16px); }
+  .sign{ margin-top:20px; }
+  .sign .ml{ color:#cfe0f2; font-size:14px; }
+  .sign .name{ font-family:'Caveat Brush'; color:#fff; font-size:clamp(34px,10vw,46px); line-height:1; }
+  .note{ margin-top:26px; color:var(--gold); font-weight:700; font-size:13px; letter-spacing:.3px; }
+  .foot{ margin-top:22px; color:#8fb6dd; font-size:10px; letter-spacing:2px; font-weight:700; }
+
+  canvas#cf{ position:fixed; inset:0; z-index:20; pointer-events:none; }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="stars" id="stars"></div>
+  <canvas id="cf"></canvas>
+
+  <div class="gate" id="gate">
+    <div class="pre">✦ A BIRTHDAY GIFT FOR MUM ✦</div>
+    <div class="box">🎁</div>
+    <button class="open" id="open">Tap to open ✨</button>
+  </div>
+
+  <main class="show" id="show">
+    <div class="reveal inv">✦ AN INVITATION ✦</div>
+    <img class="reveal logo" src="logo_white.png" alt="Mamma Mia! The Party">
+    <div class="reveal loc">THE O2 <b>•</b> LONDON</div>
+    <div class="reveal">
+      <svg class="sun" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="#e7bf5e">
+        <circle cx="50" cy="50" r="17"/>
+        <rect x="47" y="4" width="6" height="16" rx="3"/><rect x="47" y="80" width="6" height="16" rx="3"/>
+        <rect x="4" y="47" width="16" height="6" rx="3"/><rect x="80" y="47" width="16" height="6" rx="3"/>
+        <rect x="16" y="16" width="6" height="15" rx="3" transform="rotate(-45 19 23)"/>
+        <rect x="78" y="16" width="6" height="15" rx="3" transform="rotate(45 81 23)"/>
+        <rect x="16" y="69" width="6" height="15" rx="3" transform="rotate(45 19 77)"/>
+        <rect x="78" y="69" width="6" height="15" rx="3" transform="rotate(-45 81 77)"/>
+      </g></svg>
+      <div class="big">Pack your dancing shoes, Mum —<br>you &amp; Anders are going to <em>Greece!</em> <span class="lon">(London)</span></div>
+    </div>
+    <div class="reveal desc">An evening inside a Greek-island taverna — a glass of fizz on arrival, a <b>four-course Greek feast</b>, the live <b>Mamma Mia!</b> show playing out all around your table, and an <b>ABBA disco</b> to dance the night away.</div>
+
+    <div class="reveal tix">
+      <div class="tk"><span class="rib">BIRTHDAY</span>
+        <div class="tag">✦ For You, Mum</div><h3>Your Birthday Treat</h3>
+        <p>Upgraded to <b style="color:#fff">VIP</b> — champagne on arrival, wine with dinner, and the full star treatment. Because it's <i>your</i> night.</p>
+        <span class="admit">ADMIT ONE · VIP</span>
+      </div>
+      <div class="tk"><span class="rib">CHRISTMAS</span>
+        <div class="tag">✦ For Anders</div><h3>His Christmas Gift</h3>
+        <p>Arriving a little early so you two can make a proper night of it together — a Greek feast and a dance.</p>
+        <span class="admit">ADMIT ONE</span>
+      </div>
+    </div>
+
+    <div class="reveal hbd">Happy Birthday, Mum</div>
+    <div class="reveal closing">Here's to ABBA, dancing, and absolutely no washing up.</div>
+    <div class="reveal sign"><div class="ml">All my love,</div><div class="name">Oli</div>
+      <div class="note">✦ The date is ours to choose together — whenever suits you both ✦</div>
+      <div class="foot">MAMMA MIA! THE PARTY • THE O2 LONDON • DINE · DANCE · DREAM</div>
+    </div>
+  </main>
+
+<script>
+  // twinkling stars
+  (function(){ const s=document.getElementById('stars'); const marks=['✦','✧','✦'];
+    for(let i=0;i<34;i++){ const e=document.createElement('div'); e.className='star';
+      e.textContent=marks[i%3]; e.style.left=Math.random()*100+'%'; e.style.top=Math.random()*100+'%';
+      e.style.fontSize=(8+Math.random()*14)+'px'; e.style.animationDelay=(Math.random()*3.5)+'s';
+      s.appendChild(e);} })();
+
+  // confetti burst
+  function confetti(){ const c=document.getElementById('cf'), x=c.getContext('2d');
+    c.width=innerWidth; c.height=innerHeight; const cols=['#e7bf5e','#12579d','#ffffff','#c8992f'];
+    let P=[]; for(let i=0;i<160;i++){ P.push({x:Math.random()*c.width, y:-20-Math.random()*c.height,
+      w:6+Math.random()*7, h:9+Math.random()*9, c:cols[i%4], vy:2+Math.random()*3.5,
+      vx:-1.5+Math.random()*3, a:Math.random()*6, va:-.2+Math.random()*.4}); }
+    let t=0; (function run(){ t++; x.clearRect(0,0,c.width,c.height);
+      P.forEach(p=>{ p.y+=p.vy; p.x+=p.vx; p.a+=p.va; x.save(); x.translate(p.x,p.y); x.rotate(p.a);
+        x.fillStyle=p.c; x.fillRect(-p.w/2,-p.h/2,p.w,p.h); x.restore(); });
+      if(t<300){ requestAnimationFrame(run); } else { x.clearRect(0,0,c.width,c.height); } })(); }
+
+  document.getElementById('open').addEventListener('click', function(){
+    document.getElementById('gate').classList.add('hide');
+    const show=document.getElementById('show'); show.classList.add('play');
+    setTimeout(confetti, 250); setTimeout(confetti, 2400);
+  });
+</script>
+</body>
+</html>
