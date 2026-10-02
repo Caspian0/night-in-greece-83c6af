@@ -325,10 +325,10 @@
   .links a:active{ transform:scale(.97); } .links a span{ font-size:18px; } .links a i{ margin-left:auto; font-style:normal; color:var(--gold); }
 
   /* closing block as a proper card */
-  .finale{ isolation:isolate; margin-top:40px; border-radius:26px; padding:30px 20px 22px; position:relative; overflow:hidden;
+  .finale{ isolation:isolate; margin-top:40px; border-radius:26px; padding:30px 20px 22px; position:relative; overflow:visible;
     background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.14);
     box-shadow:0 30px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
-  .finale::before{ content:''; position:absolute; inset:0; background:url('mm/taverna.jpg') center/cover; opacity:.18; z-index:-1; }
+  .finale::before{ content:''; position:absolute; inset:0; border-radius:26px; background:url('mm/taverna.jpg') center/cover; opacity:.18; z-index:-1; }
   .finale .hbd{ margin-top:0; }
   .finale .sign{ margin-top:18px; }
   .perks{ display:grid; gap:10px; margin-top:22px; text-align:left; }
@@ -340,6 +340,16 @@
   .foot{ margin-top:26px; }
   .duo{ display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 40%; border-radius:20px; margin:0 0 24px;
     border:1.5px solid rgba(231,191,94,.65); box-shadow:0 20px 50px rgba(0,0,0,.5), 0 0 0 6px rgba(231,191,94,.08); }
+  .duowrap{ position:relative; margin:0 0 26px; }
+  .duowrap::before{ content:''; position:absolute; inset:-26px -34px; z-index:-1; border-radius:60px;
+    background:url('mm/duo.jpg') center 40%/cover; filter:blur(34px) saturate(1.6) brightness(1.2); opacity:.95;
+    animation:shimmer 5s ease-in-out infinite alternate; }
+  @keyframes shimmer{ from{ opacity:.7; transform:scale(1) } to{ opacity:1; transform:scale(1.04) } }
+  .duowrap .duo{ margin:0; position:relative; }
+  .sp{ position:absolute; z-index:2; font-style:normal; color:#ffe9a8; text-shadow:0 0 12px rgba(255,220,120,.9); animation:tw 2.8s ease-in-out infinite; pointer-events:none; }
+  .s1{ top:-18px; left:8%; font-size:22px; } .s2{ top:18%; right:-16px; font-size:16px; animation-delay:.6s }
+  .s3{ bottom:22%; left:-14px; font-size:18px; animation-delay:1.2s } .s4{ bottom:-14px; right:14%; font-size:20px; animation-delay:1.8s }
+  .s5{ top:46%; right:-22px; font-size:12px; animation-delay:2.2s }
 </style>
 </head>
 <body>
@@ -414,7 +424,7 @@
       </div>
     </section>
 
-    <div class="reveal finale"><img class="duo" src="mm/duo.jpg" alt="Mom and Anders"><div class="hbd">Happy Birthday, Mom</div>
+    <div class="reveal finale"><div class="duowrap"><i class="sp s1">✦</i><i class="sp s2">✧</i><i class="sp s3">✦</i><i class="sp s4">✧</i><i class="sp s5">✦</i><img class="duo" src="mm/duo.jpg" alt="Mom and Anders"></div><div class="hbd">Happy Birthday, Mom</div>
       <div class="closing">Here's to ABBA, Greek food, and absolutely no washing up.</div>
       <div class="sign"><div class="ml">All my love,</div><div class="name">Oli</div></div>
       <div class="perks">
@@ -533,7 +543,7 @@
     document.getElementById('b').onclick=s1; }
 
   // 1. captcha
-  const TILES=[['o1.jpg',1],['🐶',0],['o3.jpg',1],['🥔',0],['o2.jpg',1],['🦆',0],['o5.jpg',1],['🧸',0],['o4.jpg',1]];
+  const TILES=[['o1.jpg',1],['d1.jpg',0],['o3.jpg',1],['d3.jpg',0],['o2.jpg',1],['d4.jpg',0],['o5.jpg',1],['d2.jpg',0],['o4.jpg',1]];
   function s1(){ render(head(1)+`<div class="cap"><div class="hd"><small>Select all images with</small><b>Oli</b><small>Click verify once there are none left.</small></div><div class="grid">${
       TILES.map((t,i)=>t[0].endsWith('.jpg')?`<div class="tile" data-i="${i}" style="background-image:url(q/${t[0]})"></div>`:`<div class="tile" data-i="${i}" style="background:#f3f3f3">${t[0]}</div>`).join('')
     }</div><div class="ft"><span>↻ ⓘ</span><button id="b">VERIFY</button></div></div><div class="msg"></div>`);
