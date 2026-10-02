@@ -300,6 +300,44 @@
   .xmas .xk{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:1.8px; color:#1b0d10; padding:5px 11px; border-radius:99px;
     background:linear-gradient(135deg,#ffc3a0,#ff8a80 55%,#ff6fa3); margin-bottom:10px; }
   .xmas .xt{ font-size:15px; line-height:1.5; color:#e4e4ea; } .xmas .xt b{ color:#fff; }
+  /* ---------- SNEAK PEEK + BOTTOM ---------- */
+  .peek{ margin:38px -24px 0; text-align:center; }
+  .pk-k{ font-family:'Inter',sans-serif; font-weight:800; font-size:12px; letter-spacing:3px; color:var(--gold); margin-bottom:16px; }
+  .vid{ position:relative; margin:0 18px; border-radius:22px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.12); aspect-ratio:16/9; background:#000; }
+  .vid video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .snd{ position:absolute; right:10px; bottom:10px; border:none; border-radius:99px; padding:8px 13px; font:700 12px 'Inter',sans-serif;
+    color:#fff; background:rgba(0,0,0,.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); cursor:pointer; }
+  .car{ display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding:18px 18px 6px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .car::-webkit-scrollbar{ display:none; }
+  .car figure{ flex:0 0 78%; scroll-snap-align:center; position:relative; border-radius:20px; overflow:hidden; aspect-ratio:4/3;
+    box-shadow:0 18px 40px rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.1); }
+  .car img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 6s ease; }
+  .car figure:hover img{ transform:scale(1.06); }
+  .car figcaption{ position:absolute; left:0; right:0; bottom:0; padding:30px 14px 12px; text-align:left; font:700 15px 'Inter',sans-serif; color:#fff;
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,.75)); }
+  .cdots{ display:flex; justify-content:center; gap:6px; margin:6px 0 18px; }
+  .cdots i{ width:6px; height:6px; border-radius:99px; background:rgba(255,255,255,.3); transition:all .3s; }
+  .cdots i.on{ width:18px; background:var(--gold); }
+  .links{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0 18px; }
+  .links a{ display:flex; align-items:center; gap:9px; padding:14px 13px; border-radius:16px; text-decoration:none; color:#fff;
+    font:700 14px 'Inter',sans-serif; background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); transition:transform .15s, border-color .2s; }
+  .links a:active{ transform:scale(.97); } .links a span{ font-size:18px; } .links a i{ margin-left:auto; font-style:normal; color:var(--gold); }
+
+  /* closing block as a proper card */
+  .finale{ isolation:isolate; margin-top:40px; border-radius:26px; padding:30px 20px 22px; position:relative; overflow:hidden;
+    background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 30px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+  .finale::before{ content:''; position:absolute; inset:0; background:url('mm/taverna.jpg') center/cover; opacity:.18; z-index:-1; }
+  .finale .hbd{ margin-top:0; }
+  .finale .sign{ margin-top:18px; }
+  .perks{ display:grid; gap:10px; margin-top:22px; text-align:left; }
+  .perk{ display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:16px; background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.1); }
+  .perk .pi{ flex:0 0 38px; height:38px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:19px;
+    background:linear-gradient(135deg,#ffc3a0,#ff8a80 55%,#ff6fa3); }
+  .perk b{ display:block; font:800 12px 'Inter',sans-serif; letter-spacing:1.5px; color:#ffb3a7; margin-bottom:3px; }
+  .perk div{ font:500 14.5px/1.45 'Inter',sans-serif; color:#e4e4ea; } .perk div strong{ color:#fff; }
+  .foot{ margin-top:26px; }
 </style>
 </head>
 <body>
@@ -337,7 +375,7 @@
       </g></svg>
       <div class="big">Pack your dancing shoes!<br>you &amp; Anders are going to <em>Greece!</em> <span class="lon">(London)</span></div>
     </div>
-    <div class="reveal desc">An evening inside a Greek-island taverna — a glass of fizz on arrival, a <b>four-course Greek feast</b>, the live <b>Mamma Mia!</b> show playing out all around your table, and a <b>disco</b> after the show to dance the night away.</div>
+    <div class="reveal desc">An evening inside a Greek-island taverna — a glass of fizz on arrival, a <b>four-course Greek feast</b>, the live <b>Mamma Mia!</b> show playing out all around your table, and a <b>disco</b> after the show to dance the night away to ABBA.</div>
 
     <div class="reveal tix">
       <div class="tk"><span class="rib">BIRTHDAY</span>
@@ -352,13 +390,37 @@
       </div>
     </div>
 
-    <div class="reveal hbd">Happy Birthday, Mom</div>
-    <div class="reveal closing">Here's to dancing, Greek food, and absolutely no washing up.</div>
-    <div class="reveal sign"><div class="ml">All my love,</div><div class="name">Oli</div>
-      <div class="note">✦ The date is ours to choose together — whenever suits you both ✦</div>
-      <div class="xmas"><span class="xk">🎄 OPTIONAL CHRISTMAS PREZZIE</span><div class="xt">Fancy making a night of it in London?<br><b>I’ll pay for the hotel.</b></div></div>
-      <div class="foot">MAMMA MIA! THE PARTY • THE O2 LONDON • DINE · DANCE · DREAM</div>
+    <section class="reveal peek">
+      <div class="pk-k">✦ A SNEAK PEEK AT YOUR NIGHT ✦</div>
+      <div class="vid"><video src="mm/trailer.mp4" poster="mm/poster.jpg" autoplay muted loop playsinline preload="metadata" id="vid"></video>
+        <button class="snd" id="snd" aria-label="Sound">🔇 Tap for sound</button></div>
+      <div class="car" id="car">
+        <figure><img src="mm/taverna.jpg" loading="lazy" alt=""><figcaption>The Greek taverna</figcaption></figure>
+        <figure><img src="mm/dancing.jpg" loading="lazy" alt=""><figcaption>Dancing Queen</figcaption></figure>
+        <figure><img src="mm/feast.jpg" loading="lazy" alt=""><figcaption>Your four-course feast</figcaption></figure>
+        <figure><img src="mm/fire.jpg" loading="lazy" alt=""><figcaption>The show, all around you</figcaption></figure>
+        <figure><img src="mm/mains.jpg" loading="lazy" alt=""><figcaption>Mains, Greek-style</figcaption></figure>
+        <figure><img src="mm/finale.jpg" loading="lazy" alt=""><figcaption>The ABBA finale</figcaption></figure>
+        <figure><img src="mm/dessert.jpg" loading="lazy" alt=""><figcaption>…and dessert</figcaption></figure>
+      </div>
+      <div class="cdots" id="cdots"></div>
+      <div class="links">
+        <a href="https://mammamiatheparty.com/london/the-party/" target="_blank" rel="noopener"><span>🎭</span>The Party<i>→</i></a>
+        <a href="https://mammamiatheparty.com/london/food-and-drink/" target="_blank" rel="noopener"><span>🍽️</span>The Menu<i>→</i></a>
+        <a href="https://mammamiatheparty.com/london/the-music/" target="_blank" rel="noopener"><span>🎶</span>The Music<i>→</i></a>
+        <a href="https://mammamiatheparty.com/london/the-setting/" target="_blank" rel="noopener"><span>🏝️</span>The Setting<i>→</i></a>
+      </div>
+    </section>
+
+    <div class="reveal finale"><div class="hbd">Happy Birthday, Mom</div>
+      <div class="closing">Here's to ABBA, Greek food, and absolutely no washing up.</div>
+      <div class="sign"><div class="ml">All my love,</div><div class="name">Oli</div></div>
+      <div class="perks">
+        <div class="perk"><span class="pi">📅</span><div><b>THE DATE</b>Ours to choose together, whenever suits you both.</div></div>
+        <div class="perk"><span class="pi">🎄</span><div><b>OPTIONAL CHRISTMAS PREZZIE</b>Fancy making a night of it in London? <strong>I’ll pay for the hotel.</strong></div></div>
+      </div>
     </div>
+    <div class="foot">MAMMA MIA! THE PARTY • THE O2 LONDON • DINE · DANCE · DREAM</div>
   </main>
 
 <script>
@@ -405,6 +467,13 @@
       requestAnimationFrame(loop); })();
     document.getElementById('open').addEventListener('click',()=>setTimeout(()=>{ run=false; },800));
   })();
+  // sneak peek: sound toggle + carousel dots
+  (function(){ const v=document.getElementById('vid'), b=document.getElementById('snd');
+    if(b) b.onclick=()=>{ v.muted=!v.muted; if(!v.muted){ v.currentTime=0; v.play(); } b.textContent=v.muted?'🔇 Tap for sound':'🔊 Sound on'; };
+    const car=document.getElementById('car'), dots=document.getElementById('cdots'); if(!car) return;
+    const n=car.children.length; for(let i=0;i<n;i++){ const d=document.createElement('i'); if(!i) d.className='on'; dots.appendChild(d); }
+    car.addEventListener('scroll',()=>{ const w=car.children[0].offsetWidth+12; const i=Math.round(car.scrollLeft/w);
+      [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i)); },{passive:true}); })();
 
   // ---------- SECURITY-CHECK QUIZ ----------
   const Q=document.getElementById('quiz'), C=document.getElementById('qcard');
